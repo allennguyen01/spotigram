@@ -7,6 +7,19 @@ A platform where you can review and rate your favourite songs or albums. It incl
 - Frontend: React
 - Backend: Django/Python
 
+## Installation
+
+### Django Backend
+
+1. `cd` into backend folder
+2. run `python manage.py runserver`
+
+### React Frontend
+
+1. `cd` into frontend folder
+2. run `npm install` to install dependencies
+3. run `npm run dev`
+
 ## User Stories
 
 - [ ] User can register for an account storing their name, email/username and password then login to the app using their credentials
