@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AlbumCard from './components/AlbumCard.jsx';
-import SearchBox from './components/Searchbox.jsx';
+import NavBar from './components/NavBar.jsx';
 
 const CLIENT_ID = '8715abaf5e9647dd8f0ad679270917f0';
 const CLIENT_SECRET = '2588feebe46742a7961bac64f5cc1a4e';
@@ -63,14 +63,7 @@ function App() {
 
 	return (
 		<>
-			<section className='navbar bg-zinc-900'>
-				<div className='flex-1'>
-					<a className='btn btn-ghost font-bold text-2xl text-white'>
-						Musicboxd
-					</a>
-				</div>
-				<SearchBox search={search} setSearchInput={setSearchInput} />
-			</section>
+			<NavBar search={search} setSearchInput={setSearchInput} />
 			<div>
 				{albumSearch.map((album, i) => {
 					return <AlbumCard key={i} album={album} />;
