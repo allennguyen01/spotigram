@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AlbumCard from './components/AlbumCard.jsx';
+import SearchBox from './components/Searchbox.jsx';
 
 const CLIENT_ID = '8715abaf5e9647dd8f0ad679270917f0';
 const CLIENT_SECRET = '2588feebe46742a7961bac64f5cc1a4e';
@@ -68,27 +69,7 @@ function App() {
 						Musicboxd
 					</a>
 				</div>
-				<div className='join'>
-					<input
-						type='text'
-						placeholder='Search for album'
-						className='join-item input input-sm input-bordered w-24 rounded-full md:w-auto'
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') {
-								search();
-							}
-						}}
-						onChange={(e) => setSearchInput(e.target.value)}
-					/>
-					<button
-						className='join-item btn btn-sm'
-						onClick={() => {
-							search();
-						}}
-					>
-						Search
-					</button>
-				</div>
+				<SearchBox search={search} setSearchInput={setSearchInput} />
 			</section>
 			<div>
 				{albumSearch.map((album, i) => {
