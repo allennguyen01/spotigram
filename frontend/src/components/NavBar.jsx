@@ -3,8 +3,8 @@ import SearchBox from './Searchbox';
 
 export default function NavBar({ search, setSearchInput }) {
 	return (
-		<section className='navbar bg-zinc-900'>
-			<div className='flex-1'>
+		<section className='navbar bg-zinc-900 justify-center'>
+			<div className='flex-1 max-w-3xl'>
 				<a className='btn btn-ghost font-bold text-2xl text-white'>
 					Musicboxd
 				</a>

@@ -37,10 +37,10 @@ function App() {
 			});
 	}, []);
 
-	function search() {
+	async function search() {
 		console.log(`Searching ${searchInput}`);
 
-		axios
+		await axios
 			.get(
 				`https://api.spotify.com/v1/search?type=album&q=${searchInput}`,
 				{
@@ -62,14 +62,18 @@ function App() {
 	}
 
 	return (
-		<>
+		<div className='flex justify-center flex-col'>
 			<NavBar search={search} setSearchInput={setSearchInput} />
-			<div>
-				{albumSearch.map((album, i) => {
-					return <AlbumCard key={i} album={album} />;
-				})}
+			<div className='flex flex-col justify-center items-center'>
+				<div className='max-w-3xl'>
+					<p className='mt-4'>Found {albumSearch.length} albums</p>
+
+					{albumSearch.map((album, i) => {
+						return <AlbumCard key={i} album={album} />;
+					})}
+				</div>
 			</div>
-		</>
+		</div>
 	);
 }
 

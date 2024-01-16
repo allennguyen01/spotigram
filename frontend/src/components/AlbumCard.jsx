@@ -8,20 +8,31 @@ export default function AlbumCard({ album }) {
 	const albumReleaseYear = albumReleaseDate.getFullYear();
 
 	return (
-		<div className='card card-side bg-base-100 shadow-xl'>
-			<figure>
-				<img
-					src={albumCoverArt}
-					alt={`${albumName} album cover`}
-					className='w-28'
-				/>
-			</figure>
-			<div className='card-body'>
-				<h2 className='card-title'>{albumName}</h2>
-				<p>{albumReleaseYear}</p>
-				<p>{albumArtists}</p>
+		<>
+			<div className='divider'></div>
+			<div className='card card-side bg-base-100 shadow-xl max-w-screen-lg'>
+				<figure>
+					<img
+						src={albumCoverArt}
+						alt={`${albumName} album cover`}
+						className='w-28'
+					/>
+				</figure>
+				<div className='card-body'>
+					<h2 className='card-title font-playfair font-extrabold text-white flex items-end'>
+						{albumName}
+						<span className='font-sans font-thin text-neutral-content'>
+							{albumReleaseYear}
+						</span>
+					</h2>
+
+					<p>
+						Performed by{' '}
+						<span className='font-semibold'>{albumArtists}</span>
+					</p>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
