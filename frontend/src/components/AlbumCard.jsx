@@ -9,8 +9,7 @@ export default function AlbumCard({ album }) {
 
 	return (
 		<>
-			<div className='divider'></div>
-			<div className='card card-side bg-base-100 shadow-xl max-w-screen-lg'>
+			<div className='card card-side bg-base-100 w-3/4'>
 				<figure>
 					<img
 						src={albumCoverArt}
@@ -19,7 +18,7 @@ export default function AlbumCard({ album }) {
 					/>
 				</figure>
 				<div className='card-body'>
-					<h2 className='card-title font-playfair font-extrabold text-white flex items-end'>
+					<h2 className='card-title font-semibold text-white flex items-end'>
 						{albumName}
 						<span className='font-sans font-thin text-neutral-content'>
 							{albumReleaseYear}
@@ -27,11 +26,12 @@ export default function AlbumCard({ album }) {
 					</h2>
 
 					<p>
-						Performed by{' '}
-						<span className='font-semibold'>{albumArtists}</span>
+						<span className='font-thin'>Performed by </span>
+						{albumArtists}
 					</p>
 				</div>
 			</div>
+			<div className='divider'></div>
 		</>
 	);
 }
