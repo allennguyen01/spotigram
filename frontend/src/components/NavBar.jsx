@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 
@@ -7,9 +7,11 @@ export default function NavBar() {
 	return (
 		<section className='navbar bg-zinc-900 justify-center'>
 			<div className='flex justify-between w-[950px]'>
-				<a className='btn btn-ghost font-bold text-3xl text-white'>
-					Musicboxd
-				</a>
+				<NavLink to='/'>
+					<btn className='font-bold text-3xl text-white'>
+						Musicboxd
+					</btn>
+				</NavLink>
 				<SearchBox />
 			</div>
 		</section>
