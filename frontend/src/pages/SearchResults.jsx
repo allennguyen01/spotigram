@@ -3,8 +3,8 @@ import axios from 'axios';
 import AlbumCard from '../components/AlbumCard.jsx';
 import { useParams } from 'react-router-dom';
 
-const CLIENT_ID = '8715abaf5e9647dd8f0ad679270917f0';
-const CLIENT_SECRET = '2588feebe46742a7961bac64f5cc1a4e';
+const SPOTIFY_CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+const SPOTIFY_CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
 
 export default function SearchResults() {
 	const { searchInput } = useParams();
@@ -19,8 +19,8 @@ export default function SearchResults() {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
 			auth: {
-				username: CLIENT_ID,
-				password: CLIENT_SECRET,
+				username: SPOTIFY_CLIENT_ID,
+				password: SPOTIFY_CLIENT_SECRET,
 			},
 		};
 
