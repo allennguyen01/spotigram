@@ -42,18 +42,15 @@ export default function SearchResults() {
 		console.log(`Searching ${searchInput}`);
 
 		axios
-			.get(
-				`https://api.spotify.com/v1/search?type=album&q=${searchInput}`,
-				{
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: `Bearer ${accessToken}`,
-					},
+			.get(`https://api.spotify.com/v1/search?type=album&q=${searchInput}`, {
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${accessToken}`,
 				},
-			)
+			})
 			.then((response) => {
 				let albums = response.data.albums.items.filter(
-					(item) => item.album_type === 'album',
+					(item) => item.album_type === 'album'
 				);
 				setAlbumSearch(albums);
 			})
@@ -62,7 +59,7 @@ export default function SearchResults() {
 			});
 	}
 
-	useEffect(search, [searchInput]);
+	useEffect(search, [searchInput, accessToken]);
 
 	return (
 		<div className='flex flex-col justify-center items-center'>
@@ -73,9 +70,16 @@ export default function SearchResults() {
 				</p>
 				<div className='divider mt-0 h-2'></div>
 
-				{albumSearch.map((album, i) => {
-					return <AlbumCard key={i} album={album} />;
-				})}
+				<div className='flex flex-col'>
+					{albumSearch.map((album, i) => {
+						return (
+							<AlbumCard
+								key={i}
+								album={album}
+							/>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);
