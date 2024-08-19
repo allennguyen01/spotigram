@@ -8,9 +8,9 @@ export default function NavBar() {
 		<section className='navbar bg-zinc-900 justify-center'>
 			<div className='flex justify-between w-[950px]'>
 				<NavLink to='/'>
-					<btn className='font-bold text-3xl text-white'>
+					<button className='btn font-bold text-3xl text-white'>
 						Musicboxd
-					</btn>
+					</button>
 				</NavLink>
 				<SearchBox />
 			</div>
