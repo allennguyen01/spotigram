@@ -6,7 +6,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 export default function NavBar() {
 	return (
 		<section className='navbar bg-zinc-900 justify-center'>
-			<div className='flex justify-between w-[950px]'>
+			<div className='flex justify-between w-[1024px]'>
 				<NavLink to='/'>
 					<button className='btn font-bold text-3xl text-white'>
 						Musicboxd

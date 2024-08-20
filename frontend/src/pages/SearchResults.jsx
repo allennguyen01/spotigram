@@ -63,7 +63,7 @@ export default function SearchResults() {
 
 	return (
 		<div className='flex flex-col justify-center items-center'>
-			<div className='w-[950px]'>
+			<div className='w-[1024px]'>
 				<p className='mt-4'>
 					FOUND {albumSearch.length} ALBUMS MATCHING &quot;
 					{searchInput.toUpperCase()}&quot;

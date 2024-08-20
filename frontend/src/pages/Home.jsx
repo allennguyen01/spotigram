@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import supabase from '../config/supabaseClient';
+import ReviewedAlbumCard from '../components/ReviewedAlbumCard';
 
 export default function Home() {
 	const [reviewedAlbums, setReviewedAlbums] = React.useState([]);
@@ -21,8 +22,17 @@ export default function Home() {
 	}
 
 	return (
-		<div className='flex justify-center flex-col'>
-			<p>Home</p>
+		<div className='flex justify-center items-center flex-col p-4'>
+			<div className='flex flex-col w-[1024px] gap-4'>
+				{reviewedAlbums.map((album) => (
+					<ReviewedAlbumCard
+						key={album.id}
+						albumName={album.album_name}
+						rating={album.rating}
+						review={album.review}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }

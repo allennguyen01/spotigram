@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import ReviewRatingStars from './ReviewRatingStars';
 
 export default function AlbumCard({ album }) {
 	const albumName = album.name;
@@ -8,7 +9,7 @@ export default function AlbumCard({ album }) {
 	const albumReleaseYear = albumReleaseDate.getFullYear();
 
 	return (
-		<>
+		<div>
 			<div
 				className='card card-side items-center bg-zinc-900 w-full h-full py-4 px-6 hover:cursor-pointer'
 				onClick={() =>
@@ -38,7 +39,7 @@ export default function AlbumCard({ album }) {
 			<ReviewModal albumName={albumName} />
 
 			<div className='divider'></div>
-		</>
+		</div>
 	);
 }
 
@@ -55,10 +56,10 @@ function ReviewModal({ albumName }) {
 						✕
 					</button>
 				</form>
-				<h3 className='font-bold text-lg'>{albumName}</h3>
+				<h3 className='font-bold text-xl'>{albumName}</h3>
 
 				<ReviewTextBox />
-				<ReviewRatingStars />
+				<ReviewRatingStars albumName={albumName} />
 
 				<div className='modal-action'>
 					<form method='dialog'>
@@ -70,72 +71,11 @@ function ReviewModal({ albumName }) {
 	);
 }
 
-function ReviewRatingStars() {
-	return (
-		<div className='flex flex-col gap-1 px-1 py-2'>
-			<p className='font-normal text-sm'>Rating</p>
-			<div className='rating rating-md rating-half'>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-1 bg-green-500'
-					defaultChecked
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-2 bg-green-500'
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-1 bg-green-500'
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-2 bg-green-500'
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-1 bg-green-500'
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-2 bg-green-500'
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-1 bg-green-500'
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-2 bg-green-500'
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-1 bg-green-500'
-				/>
-				<input
-					type='radio'
-					name='rating-10'
-					className='mask mask-star-2 mask-half-2 bg-green-500'
-				/>
-			</div>
-		</div>
-	);
-}
-
 function ReviewTextBox() {
 	return (
 		<label className='form-control'>
-			<div className='label'>
-				<span className='label-text'>Review</span>
+			<div className='label py-2 px-0'>
+				<span className='label-text text-base'>Review</span>
 			</div>
 			<textarea
 				className='textarea textarea-bordered h-24'
