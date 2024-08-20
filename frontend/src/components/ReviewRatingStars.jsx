@@ -4,12 +4,14 @@ export default function ReviewRatingStars({
 	albumName,
 	rating,
 	readOnly = false,
+	setRating = () => {},
 }) {
 	const ratingValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 	return (
 		<div className='flex flex-col gap-1 py-2'>
 			{!readOnly && <p className='font-normal'>Rating</p>}
+
 			<div className='rating rating-md rating-half'>
 				{ratingValues.map((value) => (
 					<input
@@ -22,6 +24,9 @@ export default function ReviewRatingStars({
               ${value % 2 === 1 ? 'mask-half-1' : 'mask-half-2'}
               ${readOnly ? 'cursor-auto' : ''}`}
 						value={value}
+						onChange={(e) => {
+							setRating(e.target.value);
+						}}
 					/>
 				))}
 			</div>
@@ -33,4 +38,5 @@ ReviewRatingStars.propTypes = {
 	albumName: PropTypes.string,
 	rating: PropTypes.number,
 	readOnly: PropTypes.bool,
+	setRating: PropTypes.func,
 };

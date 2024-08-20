@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import ReviewRatingStars from './ReviewRatingStars';
+import ReviewModalForm from './ReviewModalForm';
 
 export default function AlbumCard({ album }) {
 	const albumName = album.name;
@@ -36,59 +36,13 @@ export default function AlbumCard({ album }) {
 				</div>
 			</div>
 
-			<ReviewModal albumName={albumName} />
+			<ReviewModalForm albumName={albumName} />
 
 			<div className='divider'></div>
 		</div>
 	);
 }
 
-function ReviewModal({ albumName }) {
-	return (
-		<dialog
-			id={`review-modal-${albumName}`}
-			className='modal'
-		>
-			<div className='modal-box'>
-				<form method='dialog'>
-					{/* if there is a button in form, it will close the modal */}
-					<button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
-						✕
-					</button>
-				</form>
-				<h3 className='font-bold text-xl'>{albumName}</h3>
-
-				<ReviewTextBox />
-				<ReviewRatingStars albumName={albumName} />
-
-				<div className='modal-action'>
-					<form method='dialog'>
-						<button className='btn'>Save</button>
-					</form>
-				</div>
-			</div>
-		</dialog>
-	);
-}
-
-function ReviewTextBox() {
-	return (
-		<label className='form-control'>
-			<div className='label py-2 px-0'>
-				<span className='label-text text-base'>Review</span>
-			</div>
-			<textarea
-				className='textarea textarea-bordered h-24'
-				placeholder='Leave a review...'
-			></textarea>
-		</label>
-	);
-}
-
 AlbumCard.propTypes = {
 	album: PropTypes.object,
-};
-
-ReviewModal.propTypes = {
-	albumName: PropTypes.string,
 };
