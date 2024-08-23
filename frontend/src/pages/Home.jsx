@@ -28,6 +28,7 @@ export default function Home() {
 					<ReviewedAlbumCard
 						key={album.id}
 						albumName={album.album_name}
+						albumCoverURL={album.album_cover_url}
 						rating={album.rating}
 						review={album.review}
 					/>

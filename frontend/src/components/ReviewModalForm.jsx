@@ -3,24 +3,56 @@ import PropTypes from 'prop-types';
 import ReviewRatingStars from './ReviewRatingStars';
 import supabase from '../config/supabaseClient';
 
-export default function ReviewModalForm({ albumName }) {
+export default function ReviewModalForm({ albumID, albumName, albumCoverURL }) {
 	const [rating, setRating] = useState(0);
 	const [review, setReview] = useState('');
+	const [formError, setFormError] = useState('');
+	const [formSuccess, setFormSuccess] = useState('');
 
 	async function handleSubmit(e) {
 		e.preventDefault();
 
+		if (!albumID || !albumName || !albumCoverURL || !rating) {
+			setFormError(
+				`${!albumID ? 'albumID' : ''}
+				${!albumName ? 'albumName' : ''}
+				${!albumCoverURL ? 'albumCoverURL' : ''}
+				${!rating ? 'rating' : ''}
+				 does not exist, please try again.`
+			);
+			return;
+		}
+
 		const { data, error } = await supabase
 			.from('reviews')
-			.insert([{ album_name: albumName, rating, review }])
+			.insert([
+				{
+					id: albumID,
+					album_name: albumName,
+					album_cover_url: albumCoverURL,
+					rating,
+					review,
+				},
+			])
 			.select();
 
 		if (error) {
 			console.error('Error inserting review:', error);
+
+			if (error.code === '23505') {
+				setFormError('Review already exists.');
+			} else {
+				setFormError('Error inserting review. Please try again.');
+			}
+
+			setFormSuccess(null);
 		}
 
 		if (data) {
 			console.log('Review inserted:', data);
+
+			setFormSuccess('Review saved successfully!');
+			setFormError(null);
 		}
 	}
 
@@ -41,12 +73,16 @@ export default function ReviewModalForm({ albumName }) {
 				<form
 					method='dialog'
 					onSubmit={handleSubmit}
+					className='flex flex-col gap-2'
 				>
 					<ReviewTextBox setReview={setReview} />
 					<ReviewRatingStars
 						albumName={albumName}
 						setRating={setRating}
 					/>
+
+					{formError && <p className='text-red-500'>{formError}</p>}
+					{formSuccess && <p className='text-green-500'>{formSuccess}</p>}
 
 					<button
 						className='btn mt-4'
@@ -78,7 +114,9 @@ function ReviewTextBox({ setReview }) {
 }
 
 ReviewModalForm.propTypes = {
+	albumID: PropTypes.string,
 	albumName: PropTypes.string,
+	albumCoverURL: PropTypes.string,
 };
 
 ReviewTextBox.propTypes = {

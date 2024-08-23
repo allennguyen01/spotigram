@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 import ReviewModalForm from './ReviewModalForm';
 
 export default function AlbumCard({ album }) {
+	const albumID = album.id;
 	const albumName = album.name;
 	const albumArtists = album.artists.map((artist) => artist.name).join(', ');
-	const albumCoverArt = album.images[0].url;
+	const albumCoverURL = album.images[0].url;
 	const albumReleaseDate = new Date(album.release_date);
 	const albumReleaseYear = albumReleaseDate.getFullYear();
 
@@ -17,7 +18,7 @@ export default function AlbumCard({ album }) {
 				}
 			>
 				<img
-					src={albumCoverArt}
+					src={albumCoverURL}
 					alt={`${albumName} album cover`}
 					className='w-28 h-28 rounded-lg'
 				/>
@@ -36,7 +37,11 @@ export default function AlbumCard({ album }) {
 				</div>
 			</div>
 
-			<ReviewModalForm albumName={albumName} />
+			<ReviewModalForm
+				albumID={albumID}
+				albumName={albumName}
+				albumCoverURL={albumCoverURL}
+			/>
 
 			<div className='divider'></div>
 		</div>
