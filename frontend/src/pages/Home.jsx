@@ -29,6 +29,8 @@ export default function Home() {
 						key={album.id}
 						albumName={album.album_name}
 						albumCoverURL={album.album_cover_url}
+						albumYear={album.year}
+						createDate={album.created_at}
 						rating={album.rating}
 						review={album.review}
 					/>
