@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import ReviewRatingStars from './ReviewRatingStars';
 import supabase from '../config/supabaseClient';
 
-export default function ReviewModalForm({ albumID, albumName, albumCoverURL }) {
+export default function ReviewModalForm({
+	albumID,
+	albumName,
+	albumCoverURL,
+	albumYear,
+}) {
 	const [rating, setRating] = useState(0);
 	const [review, setReview] = useState('');
 	const [formError, setFormError] = useState('');
@@ -12,11 +17,12 @@ export default function ReviewModalForm({ albumID, albumName, albumCoverURL }) {
 	async function handleSubmit(e) {
 		e.preventDefault();
 
-		if (!albumID || !albumName || !albumCoverURL || !rating) {
+		if (!albumID || !albumName || !albumCoverURL || !albumYear || !rating) {
 			setFormError(
 				`${!albumID ? 'albumID' : ''}
 				${!albumName ? 'albumName' : ''}
 				${!albumCoverURL ? 'albumCoverURL' : ''}
+				${!albumYear ? 'albumYear' : ''}
 				${!rating ? 'rating' : ''}
 				 does not exist, please try again.`
 			);
@@ -30,6 +36,7 @@ export default function ReviewModalForm({ albumID, albumName, albumCoverURL }) {
 					id: albumID,
 					album_name: albumName,
 					album_cover_url: albumCoverURL,
+					year: albumYear,
 					rating,
 					review,
 				},
@@ -117,6 +124,7 @@ ReviewModalForm.propTypes = {
 	albumID: PropTypes.string,
 	albumName: PropTypes.string,
 	albumCoverURL: PropTypes.string,
+	albumYear: PropTypes.number,
 };
 
 ReviewTextBox.propTypes = {

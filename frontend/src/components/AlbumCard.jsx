@@ -41,6 +41,7 @@ export default function AlbumCard({ album }) {
 				albumID={albumID}
 				albumName={albumName}
 				albumCoverURL={albumCoverURL}
+				albumYear={albumReleaseYear}
 			/>
 
 			<div className='divider'></div>
