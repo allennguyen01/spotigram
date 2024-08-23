@@ -8,8 +8,12 @@ export default function NavBar() {
 		<section className='navbar bg-zinc-900 justify-center'>
 			<div className='flex justify-between w-[1024px]'>
 				<NavLink to='/'>
-					<button className='btn font-bold text-3xl text-white'>
-						Musicboxd
+					<button className='btn bg-transparent h-full gap-4'>
+						<img
+							src='../../public/logo.svg'
+							className='h-10'
+						/>
+						<p className='font-bold text-3xl text-white'>Jukeboxd</p>
 					</button>
 				</NavLink>
 				<SearchBox />

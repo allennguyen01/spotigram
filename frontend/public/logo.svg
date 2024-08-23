@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="-2 315.76 502 284.24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-0">
+      <ellipse style="fill: rgb(188, 19, 254);" cx="399" cy="500" rx="100" ry="100"/>
+    </clipPath>
+    <clipPath id="clip-1">
+      <ellipse style="fill: rgb(188, 19, 254);" cx="249" cy="500" rx="100" ry="100"/>
+    </clipPath>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 1.4210854715202004e-14)">
+    <g style="pointer-events: none;">
+      <rect x="168.992" y="315.76" width="32.008" height="183.724" style="fill: rgb(255, 92, 0);"/>
+      <ellipse style="fill: rgb(255, 92, 0);" cx="101" cy="500" rx="100" ry="100"/>
+    </g>
+    <g style="pointer-events: none;">
+      <ellipse style="fill: rgb(255, 7, 58); paint-order: fill;" cx="250" cy="500" rx="100" ry="100"/>
+      <rect x="317.992" y="315.76" width="32.008" height="183.724" style="fill: rgb(255, 7, 58);"/>
+    </g>
+    <g style="pointer-events: none;">
+      <rect x="470" y="315.76" width="30" height="185.376" style="fill: rgb(188, 19, 254);"/>
+      <ellipse style="fill: rgb(188, 19, 254);" cx="400" cy="500" rx="100" ry="100"/>
+    </g>
+    <ellipse style="clip-path: url('#clip-0'); fill: rgb(255, 255, 255); pointer-events: none;" cx="249" cy="500" rx="101" ry="100"/>
+    <ellipse style="fill: rgb(255, 255, 255); clip-path: url('#clip-1'); pointer-events: none;" cx="99" cy="500" rx="101" ry="100"/>
+  </g>
+</svg>
