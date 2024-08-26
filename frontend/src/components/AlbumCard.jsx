@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import ReviewModalForm from './ReviewModalForm';
 import { FaSpotify } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import ISO3166ToString from '../data/ISO3166-1.alpha-2';
+import TextCollapse from './TextCollapse';
 
 export default function AlbumCard({ album }) {
 	const albumID = album.id;
@@ -10,6 +12,11 @@ export default function AlbumCard({ album }) {
 	const albumCoverURL = album.images[0].url;
 	const albumReleaseDate = new Date(album.release_date);
 	const albumReleaseYear = albumReleaseDate.getFullYear();
+	const albumAvailableMarkets = album.available_markets
+		.map((album) => {
+			return ISO3166ToString[album.toUpperCase()];
+		})
+		.join(', ');
 	const spotifyURL = album.external_urls.spotify;
 
 	const navigate = useNavigate();
@@ -46,6 +53,8 @@ export default function AlbumCard({ album }) {
 							/>
 						</a>
 					</h2>
+
+					<TextCollapse text={`Available in: ${albumAvailableMarkets}`} />
 
 					<div className='flex flex-row items-center'>
 						<span className='font-thin mr-1'>Performed by </span>
