@@ -68,9 +68,10 @@ export default function SearchResults() {
 					FOUND {albumSearch.length} ALBUMS MATCHING &quot;
 					{searchInput.toUpperCase()}&quot;
 				</p>
-				<div className='divider mt-0 h-2'></div>
 
-				<div className='flex flex-col'>
+				<div className='divider mt-0 mb-4 h-2 before:bg-neutral-600 after:bg-neutral-600'></div>
+
+				<div className='flex flex-col gap-4'>
 					{albumSearch.map((album, i) => {
 						return (
 							<AlbumCard
