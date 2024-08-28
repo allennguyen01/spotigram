@@ -6,7 +6,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 export default function NavBar() {
 	return (
 		<section className='navbar bg-zinc-900 justify-center'>
-			<div className='flex justify-between w-[1024px]'>
+			<div className='flex justify-between items-center w-[1024px]'>
 				<NavLink to='/'>
 					<button className='btn bg-transparent h-full gap-4'>
 						<img
@@ -16,7 +16,15 @@ export default function NavBar() {
 						<p className='font-bold text-3xl text-white'>Jukeboxd</p>
 					</button>
 				</NavLink>
-				<SearchBox />
+				<div className='flex items-center gap-4'>
+					<NavLink
+						to='/reviews'
+						className='text-sm font-semibold hover:text-white'
+					>
+						REVIEWS
+					</NavLink>
+					<SearchBox />
+				</div>
 			</div>
 		</section>
 	);
@@ -40,8 +48,7 @@ function SearchBox() {
 			<input
 				id='search-input'
 				type='text'
-				placeholder='Search for album'
-				className='join-item bg-white text-black input input-sm w-24 md:w-auto'
+				className='join-item input input-sm w-24 focus:bg-white focus:text-black md:w-auto'
 				onKeyDown={(e) => {
 					if (e.key === 'Enter') {
 						performSearch();
@@ -50,7 +57,7 @@ function SearchBox() {
 				onChange={(e) => setSearchInput(e.target.value)}
 			/>
 			<button
-				className='join-item bg-white btn btn-sm border-0'
+				className='join-item focus:bg-white btn btn-sm border-0'
 				onClick={() => {
 					performSearch();
 				}}

@@ -1,40 +1,27 @@
-import React, { useEffect } from 'react';
-import supabase from '../config/supabaseClient';
-import ReviewedAlbumCard from '../components/ReviewedAlbumCard';
+import React from 'react';
+import { useEffect } from 'react';
 
 export default function Home() {
-	const [reviewedAlbums, setReviewedAlbums] = React.useState([]);
-
-	useEffect(() => {
-		getReviewedAlbums();
-	}, []);
-
-	async function getReviewedAlbums() {
-		const { data, error } = await supabase.from('reviews').select();
-		if (error) {
-			console.error('Error fetching reviewed albums:', error);
-			setReviewedAlbums([]);
-		}
-
-		if (data) {
-			setReviewedAlbums(data);
-		}
-	}
-
 	return (
-		<div className='flex justify-center items-center flex-col p-4'>
-			<div className='flex flex-col w-[1024px] gap-4'>
-				{reviewedAlbums.map((album) => (
-					<ReviewedAlbumCard
-						key={album.id}
-						albumName={album.album_name}
-						albumCoverURL={album.album_cover_url}
-						albumYear={album.year}
-						createDate={album.created_at}
-						rating={album.rating}
-						review={album.review}
-					/>
-				))}
+		<div
+			className='hero min-h-screen'
+			style={{
+				backgroundImage:
+					'url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)',
+			}}
+		>
+			<div className='hero-overlay bg-opacity-60'></div>
+			<div className='hero-content text-neutral-content text-center'>
+				<div className='max-w-md'>
+					<p className='mb-5'>
+						Track albums you&apos;ve listened to.
+						<br />
+						Save those you want to hear.
+						<br />
+						Tell your friends what&apos;s good.
+					</p>
+					<button className='btn btn-primary'>Get Started</button>
+				</div>
 			</div>
 		</div>
 	);
