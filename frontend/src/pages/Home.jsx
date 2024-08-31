@@ -1,28 +1,34 @@
 import React from 'react';
-import { useEffect } from 'react';
+import SignUpModal from '../components/SignUpModal';
 
 export default function Home() {
 	return (
 		<div
-			className='hero min-h-screen'
+			className='blurred-edges hero min-h-lvh max-w-screen-xl'
 			style={{
 				backgroundImage:
-					'url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)',
+					'url(https://media.cnn.com/api/v1/images/stellar/prod/130907221429-jukebox-1942.jpg?q=w_3580,h_2340,x_0,y_0,c_fill)',
 			}}
 		>
-			<div className='hero-overlay bg-opacity-60'></div>
-			<div className='hero-content text-neutral-content text-center'>
-				<div className='max-w-md'>
-					<p className='mb-5'>
+			<div className='hero-overlay bg-opacity-40'></div>
+			<div className='hero-content mb-10 h-full items-end text-center'>
+				<div className='flex flex-col items-center justify-center gap-6'>
+					<p className='mb-5 font-playfair text-5xl font-bold text-white'>
 						Track albums you&apos;ve listened to.
 						<br />
 						Save those you want to hear.
 						<br />
 						Tell your friends what&apos;s good.
 					</p>
-					<button className='btn btn-primary'>Get Started</button>
+					<button
+						className='btn btn-primary btn-wide text-lg font-semibold text-white'
+						onClick={() => document.getElementById('sign-up-modal').showModal()}
+					>
+						Get started — it&apos;s free!
+					</button>
 				</div>
 			</div>
+			<SignUpModal />
 		</div>
 	);
 }

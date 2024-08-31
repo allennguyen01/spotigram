@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+	.blurred-edges {
+		mask-image: radial-gradient(
+			circle,
+			rgba(0, 0, 0, 1) 70%,
+			rgba(0, 0, 0, 0) 100%
+		);
+	}
+}
+
 .clamped {
 	@apply line-clamp-3 break-words;
 }

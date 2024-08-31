@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 export default function Layout() {
 	return (
-		<div className='flex justify-center flex-col'>
+		<div className='flex flex-col justify-center items-center font-inter'>
 			<NavBar />
 			<Outlet />
 		</div>
