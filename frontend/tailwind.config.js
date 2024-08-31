@@ -10,7 +10,16 @@ export default {
 		},
 	},
 	daisyui: {
-		themes: ['dark'],
+		themes: [
+			{
+				dark: {
+					...require('daisyui/src/theming/themes')['dark'],
+					primary: '#FF073A',
+					secondary: '#BC13FE',
+					accent: 'FF5C00',
+				},
+			},
+		],
 	},
 	plugins: [require('daisyui')],
 };
