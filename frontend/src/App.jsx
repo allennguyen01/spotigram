@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from './pages/Layout';
-import Home from './pages/Home';
+import Login from './pages/Login';
 import SearchResults from './pages/SearchResults';
 import Reviews from './pages/Reviews';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -15,7 +15,7 @@ function App() {
 				>
 					<Route
 						index
-						element={<Home />}
+						element={<Login />}
 					/>
 					<Route
 						path='/search/:searchInput'
