@@ -5,18 +5,24 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 export default function NavBar() {
 	return (
-		<section className='navbar bg-zinc-900 justify-center'>
-			<div className='flex justify-between items-center w-[1024px]'>
+		<section className='navbar justify-center bg-zinc-900'>
+			<div className='flex w-[1024px] items-center justify-between'>
 				<NavLink to='/'>
-					<button className='btn bg-transparent h-full gap-4'>
+					<button className='btn h-full gap-4 bg-transparent'>
 						<img
 							src='../../public/logo.svg'
 							className='h-10'
 						/>
-						<p className='font-bold text-3xl text-white'>Jukeboxd</p>
+						<p className='text-3xl font-bold text-white'>Jukeboxd</p>
 					</button>
 				</NavLink>
 				<div className='flex items-center gap-4'>
+					<NavLink
+						to='/home'
+						className='text-sm font-semibold hover:text-white'
+					>
+						HOME
+					</NavLink>
 					<NavLink
 						to='/reviews'
 						className='text-sm font-semibold hover:text-white'
@@ -48,7 +54,7 @@ function SearchBox() {
 			<input
 				id='search-input'
 				type='text'
-				className='join-item input input-sm w-24 focus:bg-white focus:text-black md:w-auto'
+				className='input join-item input-sm w-24 focus:bg-white focus:text-black md:w-auto'
 				onKeyDown={(e) => {
 					if (e.key === 'Enter') {
 						performSearch();
@@ -57,7 +63,7 @@ function SearchBox() {
 				onChange={(e) => setSearchInput(e.target.value)}
 			/>
 			<button
-				className='join-item focus:bg-white btn btn-sm border-0'
+				className='btn join-item btn-sm border-0 focus:bg-white'
 				onClick={() => {
 					performSearch();
 				}}
