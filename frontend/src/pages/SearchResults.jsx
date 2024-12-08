@@ -50,7 +50,7 @@ export default function SearchResults() {
 			})
 			.then((response) => {
 				let albums = response.data.albums.items.filter(
-					(item) => item.album_type === 'album'
+					(item) => item.album_type === 'album',
 				);
 				setAlbumSearch(albums);
 			})
@@ -62,14 +62,14 @@ export default function SearchResults() {
 	useEffect(search, [searchInput, accessToken]);
 
 	return (
-		<div className='flex flex-col justify-center items-center'>
+		<div className='flex flex-col items-center justify-center'>
 			<div className='w-[1024px]'>
 				<p className='mt-4'>
 					FOUND {albumSearch.length} ALBUMS MATCHING &quot;
 					{searchInput.toUpperCase()}&quot;
 				</p>
 
-				<div className='divider mt-0 mb-4 h-2 before:bg-neutral-600 after:bg-neutral-600'></div>
+				<div className='divider mb-4 mt-0 h-2 before:bg-neutral-600 after:bg-neutral-600'></div>
 
 				<div className='flex flex-col gap-4'>
 					{albumSearch.map((album, i) => {

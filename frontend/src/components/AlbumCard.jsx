@@ -24,7 +24,7 @@ export default function AlbumCard({ album }) {
 	return (
 		<div>
 			<div
-				className='card card-side rounded-none pb-4 border-b-[1px] border-neutral-600 hover:cursor-pointer'
+				className='card card-side rounded-none border-b-[1px] border-neutral-600 pb-4 hover:cursor-pointer'
 				onClick={() =>
 					document.getElementById(`review-modal-${albumName}`).showModal()
 				}
@@ -32,7 +32,7 @@ export default function AlbumCard({ album }) {
 				<img
 					src={albumCoverURL}
 					alt={`${albumName} album cover`}
-					className='w-28 h-28 rounded-sm'
+					className='h-28 w-28 rounded-sm'
 				/>
 				<div className='card-body py-0'>
 					<h2 className='card-title font-semibold text-white'>
@@ -57,7 +57,7 @@ export default function AlbumCard({ album }) {
 					<TextCollapse text={`Available in: ${albumAvailableMarkets}`} />
 
 					<div className='flex flex-row items-center'>
-						<span className='font-thin mr-1'>Performed by </span>
+						<span className='mr-1 font-thin'>Performed by </span>
 						<div className='flex gap-1'>
 							{albumArtists.map((artist) => (
 								<button

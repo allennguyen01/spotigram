@@ -24,7 +24,7 @@ export default function ReviewModalForm({
 				${!albumCoverURL ? 'albumCoverURL' : ''}
 				${!albumYear ? 'albumYear' : ''}
 				${!rating ? 'rating' : ''}
-				 does not exist, please try again.`
+				 does not exist, please try again.`,
 			);
 			return;
 		}
@@ -71,11 +71,11 @@ export default function ReviewModalForm({
 			<div className='modal-box'>
 				<form method='dialog'>
 					{/* if there is a button in form, it will close the modal */}
-					<button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
+					<button className='btn btn-circle btn-ghost btn-sm absolute right-2 top-2'>
 						✕
 					</button>
 				</form>
-				<h3 className='font-bold text-xl'>{albumName}</h3>
+				<h3 className='text-xl font-bold'>{albumName}</h3>
 
 				<form
 					method='dialog'
@@ -106,7 +106,7 @@ export default function ReviewModalForm({
 function ReviewTextBox({ setReview }) {
 	return (
 		<label className='form-control'>
-			<div className='label py-2 px-0'>
+			<div className='label px-0 py-2'>
 				<span className='label-text text-base'>Review</span>
 			</div>
 			<textarea

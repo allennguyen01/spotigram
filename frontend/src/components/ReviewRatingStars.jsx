@@ -12,17 +12,14 @@ export default function ReviewRatingStars({
 		<div className='flex flex-col gap-1 py-2'>
 			{!readOnly && <p className='font-normal'>Rating</p>}
 
-			<div className='rating rating-md rating-half'>
+			<div className='rating rating-half rating-md'>
 				{ratingValues.map((value) => (
 					<input
 						key={value}
 						type='radio'
 						name={`rating-10-${albumName}`}
 						disabled={readOnly}
-						className={`mask mask-star-2 bg-green-500 
-							${readOnly && value > rating ? 'bg-opacity-20' : ''}
-              ${value % 2 === 1 ? 'mask-half-1' : 'mask-half-2'}
-              ${readOnly ? 'cursor-auto' : ''}`}
+						className={`mask mask-star-2 bg-green-500 ${readOnly && value > rating ? 'bg-opacity-20' : ''} ${value % 2 === 1 ? 'mask-half-1' : 'mask-half-2'} ${readOnly ? 'cursor-auto' : ''}`}
 						value={value}
 						onChange={(e) => {
 							setRating(e.target.value);

@@ -22,8 +22,8 @@ export default function Reviews() {
 	}
 
 	return (
-		<div className='flex justify-center items-center flex-col p-4'>
-			<div className='flex flex-col w-[1024px] gap-4'>
+		<div className='flex flex-col items-center justify-center p-4'>
+			<div className='flex w-[1024px] flex-col gap-4'>
 				{reviewedAlbums.map((album) => (
 					<ReviewedAlbumCard
 						key={album.id}
