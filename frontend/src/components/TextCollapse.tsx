@@ -1,36 +1,31 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import lodash from 'lodash';
+import { debounce } from 'lodash';
 
-const TextCollapse = ({ text }) => {
+const TextCollapse = ({ text }: { text: string }) => {
 	const [clamped, setClamped] = useState(true);
 	const [showButton, setShowButton] = useState(false);
-	const containerRef = useRef(null);
+	const containerRef = useRef<HTMLParagraphElement>(null);
 	const handleClick = () => setClamped(!clamped);
 
 	useEffect(() => {
-		const hasClamping = (el) => {
+		const hasClamping = (el: HTMLParagraphElement) => {
 			const { clientHeight, scrollHeight } = el;
 			return clientHeight !== scrollHeight;
 		};
 
 		const checkButtonAvailability = () => {
-			if (containerRef.current) {
-				// Save current state to reapply later if necessary.
-				const hadClampClass = containerRef.current.classList.contains('clamp');
+			const container = containerRef.current;
 
-				// Make sure that CSS clamping is applied if applicable.
-				if (!hadClampClass) containerRef.current.classList.add('clamp');
-
-				// Check for clamping and show or hide button accordingly.
-				setShowButton(hasClamping(containerRef.current));
-
-				// Sync clamping with local state.
-				if (!hadClampClass) containerRef.current.classList.remove('clamp');
+			if (container) {
+				const hadClampClass = container.classList.contains('clamp');
+				if (!hadClampClass) container.classList.add('clamp');
+				setShowButton(hasClamping(container));
+				if (!hadClampClass) container.classList.remove('clamp');
 			}
 		};
 
-		const debouncedCheck = lodash.debounce(checkButtonAvailability, 50);
+		const debouncedCheck = debounce(checkButtonAvailability, 50);
 
 		checkButtonAvailability();
 		window.addEventListener('resize', debouncedCheck);

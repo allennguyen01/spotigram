@@ -45,7 +45,9 @@ function SearchBox() {
 	};
 
 	function performSearch() {
-		setSearchInput(document.getElementById('search-input').value);
+		setSearchInput(
+			(document.getElementById('search-input') as HTMLInputElement).value,
+		);
 		handleSearch();
 	}
 

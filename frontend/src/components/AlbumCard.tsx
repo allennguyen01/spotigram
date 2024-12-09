@@ -5,7 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import ISO3166ToString from '../data/ISO3166-1.alpha-2';
 import TextCollapse from './TextCollapse';
 
-export default function AlbumCard({ album }) {
+type AlbumCardProps = {
+	id: string;
+	name: string;
+	artists: { id: string; name: string }[];
+	images: { url: string }[];
+	release_date: string;
+	available_markets: string[];
+	external_urls: { spotify: string };
+};
+
+export default function AlbumCard({ album }: { album: AlbumCardProps }) {
 	const albumID = album.id;
 	const albumName = album.name;
 	const albumArtists = album.artists;
@@ -26,7 +36,11 @@ export default function AlbumCard({ album }) {
 			<div
 				className='card card-side rounded-none border-b-[1px] border-neutral-600 pb-4 hover:cursor-pointer'
 				onClick={() =>
-					document.getElementById(`review-modal-${albumName}`).showModal()
+					(
+						document.getElementById(
+							`review-modal-${albumName}`,
+						) as HTMLDialogElement
+					).showModal()
 				}
 			>
 				<img

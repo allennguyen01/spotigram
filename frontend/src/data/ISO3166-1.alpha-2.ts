@@ -1,4 +1,4 @@
-const ISO3166ToString = {
+const ISO3166ToString: { [key: string]: string } = {
 	AF: 'Afghanistan',
 	AX: 'Aland Islands',
 	AL: 'Albania',

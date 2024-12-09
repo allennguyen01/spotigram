@@ -1,5 +1,13 @@
-import PropTypes from 'prop-types';
 import ReviewRatingStars from './ReviewRatingStars';
+
+type ReviewedAlbumCardProps = {
+	albumName: string;
+	albumCoverURL: string;
+	albumYear: number;
+	createDate: Date;
+	rating: number;
+	review: string;
+};
 
 export default function ReviewedAlbumCard({
 	albumName,
@@ -8,7 +16,7 @@ export default function ReviewedAlbumCard({
 	createDate,
 	rating,
 	review,
-}) {
+}: ReviewedAlbumCardProps) {
 	return (
 		<div className='card card-side gap-4 rounded-none border-b-[1px] border-neutral-600 pb-4'>
 			<figure className='flex-none self-start'>
@@ -46,12 +54,3 @@ export default function ReviewedAlbumCard({
 		</div>
 	);
 }
-
-ReviewedAlbumCard.propTypes = {
-	albumName: PropTypes.string.isRequired,
-	albumCoverURL: PropTypes.string,
-	albumYear: PropTypes.number,
-	createDate: PropTypes.string,
-	rating: PropTypes.number,
-	review: PropTypes.string,
-};
