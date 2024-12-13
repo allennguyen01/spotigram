@@ -1,28 +1,34 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { FormEvent, useState } from 'react';
 import ReviewRatingStars from './ReviewRatingStars';
 import supabase from '../config/supabaseClient';
 
-export default function ReviewModalForm({
-	albumID,
-	albumName,
-	albumCoverURL,
-	albumYear,
-}) {
-	const [rating, setRating] = useState(0);
-	const [review, setReview] = useState('');
-	const [formError, setFormError] = useState('');
-	const [formSuccess, setFormSuccess] = useState('');
+type ReviewModalFormProps = {
+	id: string;
+	name: string;
+	coverURL: string;
+	year: number;
+};
 
-	async function handleSubmit(e) {
+export default function ReviewModalForm({
+	id,
+	name,
+	coverURL,
+	year,
+}: ReviewModalFormProps) {
+	const [rating, setRating] = useState<number>(0);
+	const [review, setReview] = useState<string>('');
+	const [formError, setFormError] = useState<string | null>('');
+	const [formSuccess, setFormSuccess] = useState<string | null>('');
+
+	async function handleSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 
-		if (!albumID || !albumName || !albumCoverURL || !albumYear || !rating) {
+		if (!id || !name || !coverURL || !year || !rating) {
 			setFormError(
-				`${!albumID ? 'albumID' : ''}
-				${!albumName ? 'albumName' : ''}
-				${!albumCoverURL ? 'albumCoverURL' : ''}
-				${!albumYear ? 'albumYear' : ''}
+				`${!id ? 'albumID' : ''}
+				${!name ? 'albumName' : ''}
+				${!coverURL ? 'albumCoverURL' : ''}
+				${!year ? 'albumYear' : ''}
 				${!rating ? 'rating' : ''}
 				 does not exist, please try again.`,
 			);
@@ -33,10 +39,10 @@ export default function ReviewModalForm({
 			.from('reviews')
 			.insert([
 				{
-					id: albumID,
-					album_name: albumName,
-					album_cover_url: albumCoverURL,
-					year: albumYear,
+					id: id,
+					album_name: name,
+					album_cover_url: coverURL,
+					year: year,
 					rating,
 					review,
 				},
@@ -65,7 +71,7 @@ export default function ReviewModalForm({
 
 	return (
 		<dialog
-			id={`review-modal-${albumName}`}
+			id={`review-modal-${name}`}
 			className='modal'
 		>
 			<div className='modal-box'>
@@ -75,7 +81,7 @@ export default function ReviewModalForm({
 						✕
 					</button>
 				</form>
-				<h3 className='text-xl font-bold'>{albumName}</h3>
+				<h3 className='text-xl font-bold'>{name}</h3>
 
 				<form
 					method='dialog'
@@ -84,7 +90,7 @@ export default function ReviewModalForm({
 				>
 					<ReviewTextBox setReview={setReview} />
 					<ReviewRatingStars
-						albumName={albumName}
+						albumName={name}
 						setRating={setRating}
 					/>
 
@@ -103,7 +109,7 @@ export default function ReviewModalForm({
 	);
 }
 
-function ReviewTextBox({ setReview }) {
+function ReviewTextBox({ setReview }: { setReview: (review: string) => void }) {
 	return (
 		<label className='form-control'>
 			<div className='label px-0 py-2'>
@@ -119,14 +125,3 @@ function ReviewTextBox({ setReview }) {
 		</label>
 	);
 }
-
-ReviewModalForm.propTypes = {
-	albumID: PropTypes.string,
-	albumName: PropTypes.string,
-	albumCoverURL: PropTypes.string,
-	albumYear: PropTypes.number,
-};
-
-ReviewTextBox.propTypes = {
-	setReview: PropTypes.func,
-};

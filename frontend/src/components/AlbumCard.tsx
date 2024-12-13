@@ -16,12 +16,11 @@ type AlbumCardProps = {
 };
 
 export default function AlbumCard({ album }: { album: AlbumCardProps }) {
-	const albumID = album.id;
-	const albumName = album.name;
-	const albumArtists = album.artists;
-	const albumCoverURL = album.images[0].url;
-	const albumReleaseDate = new Date(album.release_date);
-	const albumReleaseYear = albumReleaseDate.getFullYear();
+	const id = album.id;
+	const name = album.name;
+	const artists = album.artists;
+	const coverURL = album.images[0].url;
+	const releaseYear = new Date(album.release_date).getFullYear();
 	const albumAvailableMarkets = album.available_markets
 		.map((album) => {
 			return ISO3166ToString[album.toUpperCase()];
@@ -37,22 +36,20 @@ export default function AlbumCard({ album }: { album: AlbumCardProps }) {
 				className='card card-side rounded-none border-b-[1px] border-neutral-600 pb-4 hover:cursor-pointer'
 				onClick={() =>
 					(
-						document.getElementById(
-							`review-modal-${albumName}`,
-						) as HTMLDialogElement
+						document.getElementById(`review-modal-${name}`) as HTMLDialogElement
 					).showModal()
 				}
 			>
 				<img
-					src={albumCoverURL}
-					alt={`${albumName} album cover`}
+					src={coverURL}
+					alt={`${name} album cover`}
 					className='h-28 w-28 rounded-sm'
 				/>
 				<div className='card-body py-0'>
 					<h2 className='card-title font-semibold text-white'>
-						{albumName}
+						{name}
 						<span className='font-sans font-thin text-neutral-content'>
-							{albumReleaseYear}
+							{releaseYear}
 						</span>
 
 						<a
@@ -73,7 +70,7 @@ export default function AlbumCard({ album }: { album: AlbumCardProps }) {
 					<div className='flex flex-row items-center'>
 						<span className='mr-1 font-thin'>Performed by </span>
 						<div className='flex gap-1'>
-							{albumArtists.map((artist) => (
+							{artists.map((artist) => (
 								<button
 									key={artist.id}
 									className='btn btn-neutral btn-xs rounded-sm px-1 py-0'
@@ -91,10 +88,10 @@ export default function AlbumCard({ album }: { album: AlbumCardProps }) {
 			</div>
 
 			<ReviewModalForm
-				albumID={albumID}
-				albumName={albumName}
-				albumCoverURL={albumCoverURL}
-				albumYear={albumReleaseYear}
+				id={id}
+				name={name}
+				coverURL={coverURL}
+				year={releaseYear}
 			/>
 		</div>
 	);

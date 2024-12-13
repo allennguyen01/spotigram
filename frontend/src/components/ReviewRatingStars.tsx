@@ -1,13 +1,13 @@
 type ReviewRatingStarsProps = {
 	albumName: string;
-	rating: number;
+	rating?: number;
 	readOnly?: boolean;
 	setRating?: (rating: number) => void;
 };
 
 export default function ReviewRatingStars({
 	albumName,
-	rating,
+	rating = 0,
 	readOnly = false,
 	setRating = () => {},
 }: ReviewRatingStarsProps) {
