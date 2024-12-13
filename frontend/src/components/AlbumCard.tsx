@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import ReviewModalForm from './ReviewModalForm';
 import { FaSpotify } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -96,7 +95,3 @@ export default function AlbumCard({ album }: { album: AlbumCardProps }) {
 		</div>
 	);
 }
-
-AlbumCard.propTypes = {
-	album: PropTypes.object,
-};

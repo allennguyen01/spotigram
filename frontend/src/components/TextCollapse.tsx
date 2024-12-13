@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 
 const TextCollapse = ({ text }: { text: string }) => {
@@ -57,10 +56,6 @@ const TextCollapse = ({ text }: { text: string }) => {
 			)}
 		</div>
 	);
-};
-
-TextCollapse.propTypes = {
-	text: PropTypes.string,
 };
 
 export default TextCollapse;

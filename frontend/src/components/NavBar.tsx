@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 export default function NavBar() {
@@ -75,14 +74,3 @@ function SearchBox() {
 		</div>
 	);
 }
-
-NavBar.propTypes = {
-	search: PropTypes.func,
-	setSearchInput: PropTypes.func,
-};
-
-SearchBox.propTypes = {
-	search: PropTypes.func,
-	setSearchInput: PropTypes.func,
-	setSearched: PropTypes.func,
-};
