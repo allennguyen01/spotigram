@@ -11,17 +11,24 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@radix-ui/react-slot": "^1.1.1",
 		"@supabase/supabase-js": "^2.45.1",
 		"axios": "^1.6.2",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
 		"lodash": "^4.17.21",
+		"lucide-react": "^0.468.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.12.0",
 		"react-router-dom": "^6.21.3",
+		"tailwind-merge": "^2.5.5",
+		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.7.2"
 	},
 	"devDependencies": {
 		"@types/lodash": "^4.17.13",
+		"@types/node": "^22.10.2",
 		"@types/react": "^18.3.14",
 		"@types/react-dom": "^18.3.2",
 		"@vitejs/plugin-react-swc": "^3.3.2",
