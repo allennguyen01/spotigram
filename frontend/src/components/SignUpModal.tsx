@@ -1,15 +1,14 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import supabase from '../config/supabaseClient';
 
 export default function SignUpModal() {
-	const [email, setEmail] = useState('');
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
-	const [formError, setFormError] = useState('');
-	const [formSuccess, setFormSuccess] = useState('');
+	const [email, setEmail] = useState<string>('');
+	const [username, setUsername] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [formError, setFormError] = useState<string | null>('');
+	const [formSuccess, setFormSuccess] = useState<string | null>('');
 
-	async function handleSubmit(e) {
+	async function handleSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		console.log(
 			`Email: ${email}, Username: ${username}, Password: ${password}`,
@@ -86,14 +85,19 @@ export default function SignUpModal() {
 	);
 }
 
-function SignUpInput({ label, setValue }) {
-	const inputWidth = {
+type SignUpInputProps = {
+	label: string;
+	setValue: (value: string) => void;
+};
+
+function SignUpInput({ label, setValue }: SignUpInputProps) {
+	const inputWidth: { [key: string]: string } = {
 		'Email address': 'max-w-md',
 		Username: 'max-w-xs',
 		Password: 'max-w-xs',
 	};
 
-	const type = {
+	const type: { [key: string]: string } = {
 		'Email address': 'email',
 		Username: 'text',
 		Password: 'password',
@@ -113,8 +117,3 @@ function SignUpInput({ label, setValue }) {
 		</div>
 	);
 }
-
-SignUpInput.propTypes = {
-	label: PropTypes.string,
-	setValue: PropTypes.func,
-};

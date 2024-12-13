@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from './pages/Layout';
 import Login from './pages/Login';
 import Home from './pages/Home';
