@@ -1,5 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import spotifyClient from '../config/spotifyClient';
+
+type NewAlbumCards = {
+	id: string;
+	images: { url: string }[];
+	name: string;
+	artists: { name: string }[];
+	release_date: string;
+};
 
 export default function Home() {
 	const [newAlbums, setNewAlbums] = useState([]);
@@ -14,7 +22,7 @@ export default function Home() {
 
 	return (
 		<div>
-			{newAlbums.map((album) => (
+			{newAlbums.map((album: NewAlbumCards) => (
 				<div key={album.id}>
 					<img
 						src={album.images[0].url}

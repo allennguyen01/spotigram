@@ -1,4 +1,3 @@
-import React from 'react';
 import SignUpModal from '../components/SignUpModal';
 
 export default function Home() {
@@ -22,7 +21,11 @@ export default function Home() {
 					</p>
 					<button
 						className='btn btn-primary btn-wide text-lg font-semibold text-white'
-						onClick={() => document.getElementById('sign-up-modal').showModal()}
+						onClick={() =>
+							(
+								document.getElementById('sign-up-modal') as HTMLDialogElement
+							).showModal()
+						}
 					>
 						Get started — it&apos;s free!
 					</button>
