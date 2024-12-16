@@ -14,6 +14,9 @@ export default {
 				sm: 'calc(var(--radius) - 4px)',
 			},
 			colors: {},
+			boxShadow: {
+				white: '0 0 0 3px rgba(0, 0, 0, 0.05)',
+			},
 		},
 	},
 	daisyui: {

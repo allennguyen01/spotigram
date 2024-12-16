@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import AlbumCard from '../components/AlbumCard.jsx';
 import { useParams } from 'react-router-dom';
 import spotifyClient from '../config/spotifyClient';
+import HeaderDivider from '@/components/typography/HeaderDivider.js';
 
 export default function SearchResults() {
 	const { searchInput = '' } = useParams();
@@ -28,12 +29,10 @@ export default function SearchResults() {
 	return (
 		<div className='flex flex-col items-center justify-center'>
 			<div className='w-[1024px]'>
-				<p className='mt-4'>
-					FOUND {albumSearch.length} ALBUMS MATCHING &quot;
-					{searchInput.toUpperCase()}&quot;
-				</p>
-
-				<div className='divider mb-4 mt-0 h-2 before:bg-neutral-600 after:bg-neutral-600'></div>
+				<HeaderDivider
+					text={`FOUND ${albumSearch.length} ALBUMS MATCHING "${searchInput.toUpperCase()}"`}
+					className={'mb-4'}
+				/>
 
 				<div className='flex flex-col gap-4'>
 					{albumSearch.map((album, i) => {
