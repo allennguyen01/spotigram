@@ -3,6 +3,7 @@ import { FaSpotify } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import ISO3166ToString from '../data/ISO3166-1.alpha-2';
 import TextCollapse from './TextCollapse';
+import SpotifyIconButton from './icon/SpotifyIconButton';
 
 type AlbumCardProps = {
 	id: string;
@@ -51,17 +52,7 @@ export default function AlbumCard({ album }: { album: AlbumCardProps }) {
 							{releaseYear}
 						</span>
 
-						<a
-							href={spotifyURL}
-							target='_blank'
-							rel='noreferrer noopener'
-							onClick={(e) => e.stopPropagation()}
-						>
-							<FaSpotify
-								size={16}
-								className='fill-neutral-500 hover:fill-white'
-							/>
-						</a>
+						<SpotifyIconButton spotifyURL={spotifyURL} />
 					</h2>
 
 					<TextCollapse text={`Available in: ${albumAvailableMarkets}`} />
