@@ -1,6 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
+import {
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 export default function NavBar() {
 	return (
@@ -15,16 +26,17 @@ export default function NavBar() {
 						<p className='text-3xl font-bold text-white'>Jukeboxd</p>
 					</button>
 				</NavLink>
-				<div className='flex items-center gap-4'>
+				<div className='flex items-center gap-6'>
+					<SignInDialog />
 					<NavLink
 						to='/albums'
-						className='text-sm font-semibold hover:text-white'
+						className='text-sm font-semibold text-neutral-300 hover:text-white'
 					>
 						ALBUMS
 					</NavLink>
 					<NavLink
 						to='/reviews'
-						className='text-sm font-semibold hover:text-white'
+						className='text-sm font-semibold text-neutral-300 hover:text-white'
 					>
 						REVIEWS
 					</NavLink>
@@ -72,5 +84,60 @@ function SearchBox() {
 				<FaMagnifyingGlass />
 			</button>
 		</div>
+	);
+}
+
+function SignInDialog() {
+	const inputs = [
+		{
+			label: 'Email',
+			type: 'email',
+			id: 'email',
+		},
+		{
+			label: 'Password',
+			type: 'password',
+			id: 'password',
+		},
+	];
+
+	return (
+		<Dialog>
+			<DialogTrigger asChild>
+				<Button className='p-0 text-neutral-300 hover:text-white'>
+					SIGN IN
+				</Button>
+			</DialogTrigger>
+			<DialogContent className='border-0 bg-slate-700 sm:max-w-[425px]'>
+				<DialogHeader>
+					<DialogTitle className='font-light'>SIGN IN TO JUKEBOXD</DialogTitle>
+				</DialogHeader>
+				<div className='grid gap-6 py-4'>
+					{inputs.map(({ label, type, id }) => (
+						<div className='flex flex-col gap-2'>
+							<Label
+								htmlFor={id}
+								className='font-normal text-white'
+							>
+								{label}
+							</Label>
+							<Input
+								id={id}
+								type={type}
+								className='focus:border-1 col-span-3 rounded-sm bg-slate-300 text-slate-600 focus:bg-white focus:text-black'
+							/>
+						</div>
+					))}
+				</div>
+				<DialogFooter>
+					<Button
+						type='submit'
+						className='bg-primary-600 hover:bg-primary-800 h-8 rounded-sm py-2 font-semibold'
+					>
+						SIGN IN
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
 	);
 }
