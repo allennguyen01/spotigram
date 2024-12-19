@@ -17,10 +17,10 @@ export default function NavBar() {
 				</NavLink>
 				<div className='flex items-center gap-4'>
 					<NavLink
-						to='/home'
+						to='/albums'
 						className='text-sm font-semibold hover:text-white'
 					>
-						HOME
+						ALBUMS
 					</NavLink>
 					<NavLink
 						to='/reviews'

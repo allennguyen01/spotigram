@@ -1,6 +1,6 @@
 import Layout from './pages/Layout';
 import Login from './pages/Login';
-import Home from './pages/Home';
+import Albums from './pages/Albums';
 import SearchResults from './pages/SearchResults';
 import Reviews from './pages/Reviews';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -22,8 +22,8 @@ function App() {
 						element={<SearchResults />}
 					/>
 					<Route
-						path='/home'
-						element={<Home />}
+						path='/albums'
+						element={<Albums />}
 					/>
 					<Route
 						path='/reviews'
