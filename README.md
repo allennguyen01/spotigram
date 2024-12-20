@@ -15,7 +15,7 @@ Whether you're a casual listener or a hardcore music enthusiast, Jukeboxd provid
 
 ## Tech Stack
 
-- Frontend: React, TailwindCSS, daisyUI
+- Frontend: TypeScript, React, TailwindCSS, shadcn/ui
 - Datebase: Supabase (PostgresSQL)
 
 ## Installation
